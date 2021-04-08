@@ -22,7 +22,11 @@ const writeFile = function(content) {
     if (error) {
       throw new Error(`error`);
     }
-    console.log(`Downloaded and saved to ${args[1]}`);
+
+    const stats = fs.statSync(args[1]);
+    const bytes = stats.size;
+
+    console.log(`Downloaded ${bytes} bytes and saved to ${args[1]}`);
   });
 
 };
